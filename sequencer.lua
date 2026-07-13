@@ -42,12 +42,32 @@ function(state)
   end
 }
 
+sequence_c = {
+  function(state)
+    print("Step 1: Running fine...")
+  end,
+  
+  function(state)
+    print("Step 2: About to cause a crash...")
+    -- Trigger an intentional error
+    error("Something went terribly wrong!") 
+  end,
+  
+  function(state)
+    print("Step 3: This won't run.")
+  end
+}
+
 local sequencer = function (sequence)
   local state = {}
-  for _, f in ipairs(sequence) do
-    local should_continue = f(state)
+  for index, f in ipairs(sequence) do
+    local success, result = pcall(f, state)
     
-    if should_continue == false then
+    if not success then
+      print("Sequence stopped at step " .. index .. " due to error: " .. tostring(result))
+      break -- stop gracefully
+    end
+    if result == false then
       break
     end
   end
@@ -58,3 +78,6 @@ sequencer(sequence_a)
 
 print("\nSequence B -- sequence triggering early exit\n")
 sequencer(sequence_b)
+
+print("\nSequence C -- sequence triggering an error\n")
+sequencer(sequence_c)
