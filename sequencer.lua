@@ -58,9 +58,17 @@ sequence_c = {
   end
 }
 
+local function sleep(seconds)
+  local start_time = os.clock()
+
+  while os.clock() - start_time < seconds do
+  end
+end
+
 local sequencer = function (sequence)
   local state = {}
   for index, f in ipairs(sequence) do
+    sleep(2) -- sleep to slow execution for demonstration
     local success, result = pcall(f, state)
     
     if not success then
