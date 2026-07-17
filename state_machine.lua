@@ -1,6 +1,4 @@
-local function error_handler(err_message)
-  return debug.traceback("Error: " .. tostring(err_message), 2)
-end
+local errors = require('errors')
 
 -- State machine means functions will instead give a go to and the sequence passed into the function is now a
 -- table instead of a table dressed as an array
@@ -16,7 +14,7 @@ local run_machine = function (nodes, start_step, start_state)
       break
     end
 
-    local success, next_step = xpcall(step_function, error_handler, state)
+    local success, next_step = xpcall(step_function, errors, state)
 
     if not success then
       print("FATAL CRASH at step '" .. tostring(current_step) .. "':\n" .. next_step)
