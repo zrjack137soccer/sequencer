@@ -33,7 +33,7 @@ end
 if mode == "linear" then
   
   -- 3.a Find and load sequence file
-  local loaded_data = find_file("content/sequences", filename)
+  local loaded_data = find_file("content/sequences/", filename)
   
   local run_linear = require("engine/sequencer")
   
