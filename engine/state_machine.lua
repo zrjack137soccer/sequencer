@@ -1,4 +1,4 @@
-local errors = require('errors')
+local errors = require('engine/errors')
 
 -- State machine means functions will instead give a go to and the sequence passed into the function is now a
 -- table instead of a table dressed as an array
