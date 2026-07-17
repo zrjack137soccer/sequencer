@@ -30,10 +30,12 @@ lua main.lua state trap_doors
 
 ## Structure
 
-```
-hello.lua -> "Hello, World!"
-main.lua -> root file for execution
-/engine -> contains all mechanisms like the sequencer and state machine
-/content -> contains lua files that are used with the engine (files for the state machine are in this folder)
-|_ /sequences -> contains all linear sequence lua files
+```plain
+sequencer/
+├── engine/ -> contains all mechanisms like the sequencer and state machine
+├── content/ -> contains lua files that are used with the engine (files for the state machine are in this folder)
+│   └── sequences/ -> contains all linear sequence lua files
+├── hello.lua -> "Hello, World!"
+├── main.lua -> root file for execution
+└── README.md
 ```
