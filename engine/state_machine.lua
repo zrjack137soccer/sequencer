@@ -1,6 +1,6 @@
 local errors = require('engine/errors')
 
--- State machine means functions will instead give a go to and the sequence passed into the function is now a
+-- State machine means functions will instead give a go to and the nodes passed into the function is now a
 -- table instead of a table dressed as an array
 local run_machine = function (nodes, start_step, start_state)
   local state = start_state or {}
