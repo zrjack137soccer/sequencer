@@ -1,4 +1,4 @@
--- File: map_nodes.lua
+-- File: rooms.lua
 
 local nodes = {}
 
